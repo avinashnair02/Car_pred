@@ -20,7 +20,8 @@ y= df[['price']]
 
 
 
-model = pickle.load(open('car_sell_xgbr_best_model.pkl', 'rb'))
+#model = pickle.load(open('car_sell_xgbr_best_model.pkl', 'rb'))
+model = pickle.load(open("car_sell_xgbr_best_model.pkl", "rb"))
 
 @app.route('/',methods=['GET'])
 def Home():
