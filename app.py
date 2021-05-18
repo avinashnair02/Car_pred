@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,jsonify
 #import jsonify
 import requests
 import pickle
@@ -558,10 +558,20 @@ def predict():
         final_features = np.array(prediction).reshape(1, -1)
         prediction1 = model.predict(final_features)
         output=round(prediction1[0],2)
+
+        prediction_text = 'Sorry you cannot sell this car'
+        
+       
         if output<0:
-            return render_template('index.html',prediction_texts="Sorry you cannot sell this car")
+            prediction_text="Sorry you cannot sell this car"
         else:
-            return render_template('index.html',prediction_text="You can sell the Car at {} lakhs".format(output))
+            prediction_text="You can sell the Car at {} lakhs".format(output)
+
+        response = jsonify({
+            'message': prediction_text
+        })
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
     else:
         return render_template('index.html')
 

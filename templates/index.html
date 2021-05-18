@@ -14,7 +14,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="static/css/styles.css">
-
+    <script src="static/js/script.js" defer></script>
 
 </head>
 
@@ -38,12 +38,20 @@
 <a2>Please fill the parameters below and click on Selling Price button to check car price</a2>
 
 
-        <form action="\predict" method="post">
+        <form id="form-el">
        
-            <h3>Car Brand</h3><input id="first" value="Honda" name="Company" placeholder="eg. like the year 'Maruti' "type="number " >
+           <!-- <h3>Car Brand</h3><input id="first" value="Honda" name="Company" placeholder="eg. like the year 'Maruti' "type="number " >-->
+            <h3>Car Brand</h3><select name="Company" id="first" required="required">
+                
+            </select>
         <br>
         <br>
-            <h3>Model</h3><input id="second" name="carName" value="Civic" placeholder="eg. 'Civic"required="required">
+            <h3>Model</h3>
+            <select name="carName" id="second" required="required" >
+                
+            </select>
+            <!-- <input 
+            id="second" name="carName" value="Civic" placeholder="eg. 'Civic"required="required"> -->
         <br>  
         <br>  
             <h3>Kilometers Driven</h3><input id="third" name="km" value="66867" placeholder="eg. 10000 Km driven before"required="required" >
@@ -63,9 +71,9 @@
                 <option value="Electric">Electric</option>
             </select>
         <br>            
-            <br><br><button id="sub" type="submit ">Selling Price</button>
+            <br><br><button id="sub" onclick="predict()" type="button" >Selling Price</button>
         </form>
-        <h3>{{ prediction_text }}<h3>
+        <h3 id="output-message"><h3>
         <br>
     </div>
         
@@ -86,7 +94,7 @@
            <p class='footer-description'>© Machine Leaning App</p>
        </div>
 
-
+    
 </body>
 
 </html>
